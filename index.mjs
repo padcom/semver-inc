@@ -23,6 +23,9 @@ if (args.version) {
 
 function makeNextVersion(version, tag = null) {
   const parsed = SemVer.parse(version)
+  if (version === 'master') {
+    version = 'patch'
+  }
   if (['major', 'minor', 'patch'].includes(tag)) {
     return SemVer.inc(version, tag)
   } else if (tag === 'pass') {
