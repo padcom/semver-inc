@@ -1,6 +1,6 @@
 {
   "name": "@padcom/semver-inc",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Semantic version incrementor",
   "author": "Matthias Hryniszak <padcom@gmail.com>",
   "license": "Apache-2.0",
