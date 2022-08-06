@@ -54,6 +54,6 @@ async function withPackageJSON(filename = './package.json', callback = async (x)
   await writeFile(filename, JSON.stringify(pkg, null, 2))
 }
 
-await withPackageJSON('../../npm-serve/package.json', async (pkg) => {
+await withPackageJSON('./package.json', async (pkg) => {
   pkg.version = makeNextVersion(pkg.version, args.inc)
 })
