@@ -6,9 +6,10 @@ import minimist from 'minimist'
 import pkg from './package.json' assert { type: 'json' }
 
 const args = minimist(process.argv.slice(2));
-args.inc = args.i || args.inc || null
+args.inc = args.i || args.inc || args._.length > 0 ? args._[0] : 'patch'
 args.help = args.h || args.help || false
 args.version = args.V || args.version || false
+args['dry-run'] = args.d || args['dry-run'] || false
 
 if (args.help) {
   console.log(pkg.name, '-', pkg.description)
@@ -20,18 +21,11 @@ if (args.version) {
   process.exit(0)
 }
 
-/**
- * Checks if the given version is beta
- *
- * @param {String|null} version
- */
-function isBeta(version) {
-  return (version || '').includes('-beta')
-}
-
 function makeNextVersion(version, tag = null) {
   const parsed = SemVer.parse(version)
-  if (tag === 'pass') {
+  if (['major', 'minor', 'patch'].includes(tag)) {
+    return SemVer.inc(version, tag)
+  } else if (tag === 'pass') {
     return version
   } else if (tag === 'release' || tag === null) {
     if (parsed.prerelease.length > 0) {
@@ -55,5 +49,7 @@ async function withPackageJSON(filename = './package.json', callback = async (x)
 }
 
 await withPackageJSON('./package.json', async (pkg) => {
-  pkg.version = makeNextVersion(pkg.version, args.inc)
+  const next = makeNextVersion(pkg.version, args.inc)
+  console.log(pkg.version, '=>', next)
+  if (!args['dry-run']) pkg.version = next
 })

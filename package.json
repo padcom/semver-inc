@@ -6,9 +6,11 @@
   "license": "Apache-2.0",
   "type": "module",
   "main": "index.mjs",
-  "bin": "index.mjs",
+  "bin": {
+    "npm-serve": "index.mjs"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "./index.mjs"
   },
   "keywords": [
     "semver"
@@ -23,9 +25,6 @@
   "funding": {
     "type": "patreon",
     "url": "https://www.patreon.com/padcom"
-  },
-  "bin": {
-    "npm-serve": "index.mjs"
   },
   "dependencies": {
     "minimist": "^1.2.6",
