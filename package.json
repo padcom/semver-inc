@@ -1,0 +1,37 @@
+{
+  "name": "@padcom/semver-inc",
+  "version": "1.0.0",
+  "description": "Semantic version incrementor",
+  "author": "Matthias Hryniszak <padcom@gmail.com>",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "index.mjs",
+  "bin": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "semver"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/padcom/semver-inc"
+  },
+  "bugs": {
+    "url": "https://github.com/padcom/semver-inc/issues"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/padcom"
+  },
+  "bin": {
+    "npm-serve": "index.mjs"
+  },
+  "dependencies": {
+    "minimist": "^1.2.6",
+    "semver": "^7.3.7"
+  },
+  "devDependencies": {
+    "@types/node": "^18.6.4"
+  }
+}
